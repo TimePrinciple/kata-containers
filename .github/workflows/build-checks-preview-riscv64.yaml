@@ -2,6 +2,9 @@
 # `build-checks.yaml` are supported
 on:
   workflow_dispatch:
+    inputs:
+      instance:
+        default: "riscv-builder"
   workflow_call:
     inputs:
       instance:
@@ -11,7 +14,7 @@ on:
 name: Build checks preview riscv64
 jobs:
   check:
-    runs-on: riscv-builder
+    runs-on: ${{ inputs.instance }}
     strategy:
       fail-fast: false
       matrix:
